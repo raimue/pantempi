@@ -3,11 +3,51 @@
 pantempi is a temperature and humidity sensor board based on the panStamp
 wireless sensor nodes.
 
-==== Requirements ====
+==== Hardware Assembly ====
 
-...
+Each panStamp needs an antenna. A simple wire stub should do. The default
+frequency is 868 MHz, but they can also operate on 915 MHz if you chose so
+later on.
 
-==== Building ====
+               |  868 MHz | 915 MHz  |
+---------------+----------+----------+
+1/4 Wavelength |  82.2 mm |  77.9 mm |
+1/2 Wavelength | 164.3 mm | 155.9 mm |
+---------------+----------+----------+
+
+In experiments it seems like that these do not have to be very exact on short
+distance, so any wirelength around 8 cm should do.
+
+(Source: http://code.google.com/p/panstamp/wiki/antennalengths)
+
+
+==== Software Requirements ====
+
+* Arduino panstamp library
+
+This is required for the pantempi firmware. Import library with the help of the
+Arduino IDE or simply place the panstamp folder in this ZIP file into the
+.../arduino/libraries/ directory (detailed installation instructions can be
+found at http://arduino.cc/en/Guide/Libraries).
+
+http://www.panstamp.com/downloads/panstamp_library.zip?attredirects=0&d=1
+
+
+* Arduino Timer1 library
+
+This is required for the modem firmware. See instructins above.
+
+http://playground.arduino.cc/code/timer1
+
+
+* panStamp Python applications
+
+Extract these to any directory for later use.
+
+http://www.panstamp.com/downloads/panStamp_apps.zip?attredirects=0&d=1
+
+
+==== Building & Flashing ====
 
 ...
 
