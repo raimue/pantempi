@@ -2,24 +2,24 @@
  * modem.pde
  *
  * Copyright (c) 2011 Daniel Berenguer <dberenguer@usapiens.com>
- * 
+ *
  * This file is part of the panStamp project.
- * 
+ *
  * panStamp  is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * panStamp is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with panStamp; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
- * 
+ *
  * Author: Daniel Berenguer
  * Creation date: 15/02/2011
  *
@@ -97,18 +97,18 @@ void handleSerialCmd(char* command)
   byte i, len;
   byte arrV[2];
   CCPACKET packet;
-  ATQUERY atQuery = ATQUERY_REQUEST;  
- 
+  ATQUERY atQuery = ATQUERY_REQUEST;
+
   // Data mode?
   if (serMode == SERMODE_DATA)
   {
     packet.length = strlen(command)/2;
-    
+
     if (packet.length > 0)
     {
       // Convert ASCII string into array of bytes
       for(i=0 ; i<packet.length ; i++)
-      {     
+      {
         packet.data[i] = charToHex(command[i*2]) << 4;
         packet.data[i] |= charToHex(command[i*2 + 1]);
       }
@@ -120,7 +120,7 @@ void handleSerialCmd(char* command)
   else  // serMode = SERMODE_COMMAND
   {
     len = strlen(command);
-    
+
     if (len < 5)
     {
       // Basic attention command
@@ -141,7 +141,7 @@ void handleSerialCmd(char* command)
       }
     }
     // Set new value
-    else 
+    else
     {
       if ((strSerial[4] == '=') && (len >= 6))
       {
@@ -242,18 +242,18 @@ void setup()
 {
   pinMode(LEDPIN, OUTPUT);
   digitalWrite(LEDPIN, HIGH);
- 
+
   // Calibrate internal RC oscillator
   rcOscCalibrate();
-  
+
   // Reset serial buffer
   memset(strSerial, 0, sizeof(strSerial));
 
   Serial.begin(38400);
   Serial.flush();
   Serial.println("");
-  
-  // Default mode is COMMAND 
+
+  // Default mode is COMMAND
   Serial.println("Modem ready!");
   // Setup CC1101
   cc1101.init();
@@ -261,14 +261,14 @@ void setup()
   // Disable address check from the CC1101 IC
   cc1101.disableAddressCheck();
 
-  delay(100);  
+  delay(100);
 
   // Enter RX state
   cc1101.setRxState();
 
   // Attach callback function for GDO0 (INT0)
   enableINT0irq();
-  
+
   // Init Timer1
   Timer1.initialize(TIMER1_TICK_PERIOD_US);
   // Attach interrupt function to Timer1
@@ -290,7 +290,7 @@ void loop()
 
     byte i;
     CCPACKET packet;
-   
+
     packetAvailable = false;
 
     if (cc1101.receiveData(&packet) > 0)
@@ -316,7 +316,7 @@ void loop()
     }
 
     // Enable wireless reception interrupt
-    enableINT0irq(); 
+    enableINT0irq();
   }
 
   // Read serial command
@@ -332,7 +332,7 @@ void loop()
       memset(strSerial, 0, sizeof(strSerial));
       len = 0;
     }
-    else if (ch == 0x0D) 
+    else if (ch == 0x0D)
     {
       Timer1.detachInterrupt();
       strSerial[len] = 0;
@@ -342,7 +342,7 @@ void loop()
     }
     else
     {
-      strSerial[len] = ch; 
+      strSerial[len] = ch;
       len++;
       resetTimer();
       // Attach interrupt function to Timer1
@@ -365,7 +365,7 @@ void loop()
 byte charToHex(byte ch)
 {
   byte val;
-  
+
   if (ch >= 'A' && ch <= 'F')
     val = ch - 55;
   else if (ch >= 'a' && ch <= 'f')
@@ -375,18 +375,17 @@ byte charToHex(byte ch)
   else
     val = 0x00;
 
-  return val;  
+  return val;
 }
 
 /**
  * swReset
- * 
+ *
  * Software reset
  */
-void swReset(void) 
+void swReset(void)
 {
-  wdt_disable();  
+  wdt_disable();
   wdt_enable(WDTO_15MS);
   while (1) {}
 }
-
