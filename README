@@ -31,6 +31,17 @@ distance, so any wirelength around 8 cm should do.
 
 ==== Software Requirements ====
 
+* Arduino IDE
+
+While the Arduino-Makefile used in this project allows to compile the firmware
+from the command line without use of the Arduino IDE, the toolchain and Arduino
+core libraries are still required. The Makefile detects an existing
+installation Arduino IDE installation and uses its resources. Your mileage may
+vary.
+
+  http://arduino.cc/en/Main/Software
+
+
 * Arduino panstamp library
 
 This is required for the pantempi firmware. Import library with the help of the
@@ -38,21 +49,33 @@ Arduino IDE or simply place the panstamp folder in this ZIP file into the
 .../arduino/libraries/ directory (detailed installation instructions can be
 found at http://arduino.cc/en/Guide/Libraries).
 
-http://www.panstamp.com/downloads/panstamp_library.zip?attredirects=0&d=1
+DO NOT USE THE LIBRARY FROM THE SUBVERSION OR tools/panstamp/arduino/.
+Apparently EEPROM handling is broken in this version at the moment and
+therefore new nodes with this firmware cannot be configured remotely. Use the
+release from the panStamp website.
+
+  http://www.panstamp.com/downloads/panstamp_library.zip?attredirects=0&d=1
 
 
 * Arduino Timer1 library
 
 This is required for the modem firmware. See instructins above.
 
-http://playground.arduino.cc/code/timer1
+  http://playground.arduino.cc/code/timer1
 
 
 * panStamp Python applications
 
-Extract these to any directory for later use.
+The host software components are already available in tools/panstamp/python
+after initializing the git submodules as described above. While the upstream
+release should work, the local branch contains portability fixes for
+pyswapdmtgui. Additionally it fixes pyswapdmt which offers a command line
+interface to sniff and monitor SWAP traffic and configure nodes.
 
-http://www.panstamp.com/downloads/panStamp_apps.zip?attredirects=0&d=1
+The python applications have their own requirements, depending on which tool
+you want to use you will need python >= 2.6, wxPython >=2.8, and pyserial.
+
+  (http://www.panstamp.com/downloads/panStamp_apps.zip?attredirects=0&d=1)
 
 
 ==== Building & Flashing ====
