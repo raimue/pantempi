@@ -38,6 +38,18 @@ Adafruit_BMP085 bmp;
 #endif
 
 /**
+ * Sensor values
+ */
+#ifdef TEMP
+byte dtSensor[2];
+#elif TEMPHUM
+byte dtSensor[4];
+#else
+byte dtSensor[6];
+#endif
+byte dtReturn;
+
+/**
  * Local functions
  */
 #ifdef TEMPHUM

@@ -27,6 +27,8 @@
 #ifndef _SENSOR_H
 #define _SENSOR_H
 
+#include <Arduino.h>
+
 /**
  * Type of sensor. Uncomment only one of these options: TEMP, TEMPHUM or TEMPPRESS
  */
@@ -45,14 +47,29 @@
  * Sensor values
  */
 #ifdef TEMP
-  byte dtSensor[2];
+extern byte dtSensor[2];
 #elif TEMPHUM
-  byte dtSensor[4];
+extern byte dtSensor[4];
 #else
-  byte dtSensor[6];
+extern byte dtSensor[6];
+#endif
+extern byte dtReturn;
+
+/**
+ * Sensor reading function
+ */
+#if defined(TEMP)
+int sensor_ReadTemp(void)
+#elif defined(TEMPHUM)
+int sensor_ReadTempHum(void);
+#elif defined(TEMPPRESS)
+int sensor_ReadTempPress(void);
 #endif
 
-byte dtReturn = 0;
+/**
+ * Sensor initialization
+ */
+void initSensor(void);
 
 /**
  * Pin definitions

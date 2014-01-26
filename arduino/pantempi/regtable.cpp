@@ -46,8 +46,10 @@ DEFINE_COMMON_REGISTERS()
 // Voltage supply
 static unsigned long voltageSupply = 3300;
 static byte dtVoltSupply[2];
+const void updtVoltSupply(byte rId);
 REGISTER regVoltSupply(dtVoltSupply, sizeof(dtVoltSupply), &updtVoltSupply, NULL);
 // Sensor value register
+const void updtSensor(byte rId);
 REGISTER regSensor(dtSensor, sizeof(dtSensor), &updtSensor, NULL);
 
 /**

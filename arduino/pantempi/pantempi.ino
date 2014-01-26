@@ -59,6 +59,7 @@
  * temppress.xml (Dual Pressure + Temperature sensor)
  */
 
+#include <EEPROM.h>
 #include "regtable.h"
 #include "panstamp.h"
 
