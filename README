@@ -3,6 +3,15 @@
 pantempi is a temperature and humidity sensor board based on the panStamp
 wireless sensor nodes.
 
+
+==== git submodule configuration ====
+
+This repository uses external repostiories using git submodules:
+
+ $ git submodule init
+ $ git submodule update
+
+
 ==== Hardware Assembly ====
 
 Each panStamp needs an antenna. A simple wire stub should do. The default
