@@ -18,11 +18,10 @@ Each panStamp needs an antenna. A simple wire stub should do. The default
 frequency is 868 MHz, but they can also operate on 915 MHz if you chose so
 later on.
 
-               |  868 MHz | 915 MHz  |
----------------+----------+----------+
-1/4 Wavelength |  82.2 mm |  77.9 mm |
-1/2 Wavelength | 164.3 mm | 155.9 mm |
----------------+----------+----------+
+                 |  868 MHz | 915 MHz  |
+  ---------------+----------+----------+
+  1/4 Wavelength |  82.2 mm |  77.9 mm |
+  1/2 Wavelength | 164.3 mm | 155.9 mm |
 
 In experiments it seems like that these do not have to be very exact on short
 distance, so any wirelength around 8 cm should do.
