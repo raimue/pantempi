@@ -1,3 +1,7 @@
 [submodule "tools/arduino-mk"]
 	path = tools/arduino-mk
 	url = https://github.com/sudar/Arduino-Makefile.git
+[submodule "tools/panstamp"]
+	path = tools/panstamp
+	url = https://github.com/raimue/panstamp
+	branch = pantempi
