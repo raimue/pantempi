@@ -47,6 +47,12 @@
  */
 #define LEDPIN               4
 
+/*
+ * Forward declarations
+ */
+byte charToHex(byte ch);
+void swReset(void);
+
 /**
  * isrINT0event
  *
