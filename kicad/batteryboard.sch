@@ -36,7 +36,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "panStamp battery-powered board"
-Date "6 oct 2013"
+Date "28 jan 2014"
 Rev "01"
 Comp "www.panstamp.com"
 Comment1 ""
@@ -57,10 +57,6 @@ Wire Wire Line
 	2850 6150 2550 6150
 Wire Wire Line
 	8300 5500 7100 5500
-Wire Wire Line
-	2500 2300 1900 2300
-Wire Wire Line
-	2500 2900 1900 2900
 Connection ~ 7600 5500
 Wire Wire Line
 	7600 6100 7600 5500
@@ -97,8 +93,6 @@ Wire Wire Line
 	2550 6150 2550 6200
 Wire Wire Line
 	5600 3750 5600 3800
-Wire Wire Line
-	2500 3000 1900 3000
 Wire Wire Line
 	8600 6600 8600 6700
 Wire Wire Line
@@ -191,11 +185,11 @@ F 3 "" H 9900 6300 60  0001 C CNN
 	1    9900 6300
 	1    0    0    -1  
 $EndComp
-Text Label 1900 3000 0    60   ~ 0
+Text Label 4700 2600 0    60   ~ 0
 A2
-Text Label 1900 2900 0    60   ~ 0
+Text Label 4700 2500 0    60   ~ 0
 A1
-Text Label 1900 2300 0    60   ~ 0
+Text Label 1900 3000 0    60   ~ 0
 BATTERY
 $Comp
 L +3.3V #PWR04
@@ -432,8 +426,8 @@ SENSOR_ENA
 Text Label 2850 4800 0    60   ~ 0
 SENSOR_DATA
 NoConn ~ 2500 2400
-NoConn ~ 2500 2700
-NoConn ~ 4150 2600
+NoConn ~ 2500 2900
+NoConn ~ 2500 2800
 NoConn ~ 2500 2600
 NoConn ~ 2500 2500
 Wire Wire Line
@@ -473,8 +467,8 @@ F 3 "" H 6050 2850 60  0001 C CNN
 	1    6050 2850
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2500 2800
-NoConn ~ 4150 2500
+NoConn ~ 2500 2300
+NoConn ~ 2500 2700
 NoConn ~ 4150 2400
 NoConn ~ 4150 2300
 NoConn ~ 4150 2200
@@ -499,4 +493,10 @@ Text Label 4150 2800 0    60   ~ 0
 LED1
 Text Label 4150 2700 0    60   ~ 0
 LED2
+Wire Wire Line
+	4150 2500 4700 2500
+Wire Wire Line
+	4150 2600 4700 2600
+Wire Wire Line
+	2500 3000 1900 3000
 $EndSCHEMATC
