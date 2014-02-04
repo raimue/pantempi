@@ -755,7 +755,7 @@
     )
   )
 
-  (gr_text "pantempi\nv0.2b" (at 180.721 71.12) (layer B.Cu)
+  (gr_text "pantempi\nv1.0" (at 180.721 71.12) (layer B.Cu)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify mirror))
   )
   (gr_line (start 160.02 140.97) (end 160.02 68.58) (angle 90) (layer Edge.Cuts) (width 0.15))
