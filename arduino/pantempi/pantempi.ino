@@ -80,6 +80,7 @@
  * Debug output on serial line
  */
 //#define DEBUG_SERIAL
+//#define DEBUG_LED
 
 /**
  * setup
@@ -139,7 +140,9 @@ void loop()
 {
   int res;
 
+#ifdef DEBUG_LED
   digitalWrite(LED_STATUS_PIN, HIGH);
+#endif
 
 #ifdef DEBUG_SERIAL
   Serial.print("Sensor read:");
@@ -150,11 +153,13 @@ void loop()
   // Transmit power voltage
   getRegister(REGI_VOLTSUPPLY)->getData();
 
+#ifdef DEBUG_LED
   if (dtReturn == 0) {
       digitalWrite(LED_FAILURE_PIN, LOW);
   } else {
       digitalWrite(LED_FAILURE_PIN, HIGH);
   }
+#endif
 
 #ifdef DEBUG_SERIAL
   Serial.print(" ret=");
@@ -166,7 +171,9 @@ void loop()
   Serial.println("");
 #endif
 
+#ifdef DEBUG_LED
   digitalWrite(LED_STATUS_PIN, LOW);
+#endif
 
   // Sleep
   panstamp.goToSleep();
