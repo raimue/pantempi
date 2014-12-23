@@ -3,4 +3,6 @@
 PANSTAMPDIR=${0%/*}/panstamp/python
 export PYTHONPATH=$PANSTAMPDIR/pyswap/${PYTHONPATH:+:$PYTHONPATH}
 
-exec ${PYTHON:-python} $PANSTAMPDIR/swapdmt-cmd/swapdmt.py "$@"
+RLWRAP="$(type -fp rlwrap 2>/dev/null)"
+
+exec $RLWRAP ${PYTHON:-python} $PANSTAMPDIR/swapdmt-cmd/swapdmt.py "$@"
