@@ -66,11 +66,6 @@
 #include "sensor.h"
 
 /**
- * Uncomment if you are reading Vcc from A7. All battery-boards do this
- */
-//#define VOLT_SUPPLY_A7
-
-/**
  * LED pin
  */
 #define LED_STATUS_PIN               4

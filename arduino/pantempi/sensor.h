@@ -74,6 +74,12 @@ void initSensor(void);
 /**
  * Pin definitions
  */
+
+/**
+ * Uncomment if you are reading Vcc from A7. All battery-boards do this
+ */
+#define VOLT_SUPPLY_A7
+
 // Temperature + Humidity (DHT11 or DHT22)
 #ifdef TEMPHUM
 #define PORTW_DHT_DATA    PORTC
